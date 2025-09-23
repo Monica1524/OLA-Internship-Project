@@ -76,6 +76,115 @@ Table: **OLA_DataSet**
 
 ---
 
+## SQL Queries
+-- **1. Retrieve all Successful bookings**:-
+
+SELECT * FROM OLA_DataSet
+
+WHERE booking_status = 'Success';
+
+-- **2. Find the average ride distance for each vehicle type**:-
+
+SELECT 
+    vehicle_type,
+    AVG(CAST(ride_distance AS REAL)) AS avg_distance
+
+FROM OLA_DataSet
+
+WHERE ride_distance GLOB '[0-9]*'
+
+GROUP BY vehicle_type;
+
+-- **3. Get the total number of cancelled rides by customers**:-
+
+SELECT COUNT(*) AS Total_cancellation_by_customers
+
+FROM OLA_DataSet
+
+WHERE booking_status = 'Canceled by Customer';
+
+-- **4. List the top 5 customers who booked the highest number of rides**:-
+
+SELECT 
+    customer_id,
+    COUNT(booking_id) AS total_rides
+
+FROM OLA_DataSet
+
+GROUP BY customer_id
+
+ORDER BY total_rides DESC
+LIMIT 5;
+
+-- **5. Get the number of rides cancelled by drivers due to personal and car-related issues**:-
+
+SELECT 
+    incomplete_rides_reason,
+    COUNT(booking_id) AS cancelled_count
+
+FROM OLA_DataSet
+
+WHERE booking_status = 'Canceled by Driver'
+  
+  AND incomplete_rides_reason IN ('Customer Demand', 'Vehicle Breakdown')
+
+GROUP BY incomplete_rides_reason;
+
+-- **6. Find the maximum and minimum driver ratings for Prime Sedan bookings**:-
+
+SELECT 
+    MAX(CAST(driver_ratings AS REAL)) AS max_driver_rating,
+    MIN(CAST(driver_ratings AS REAL)) AS min_driver_rating
+
+FROM OLA_DataSet
+
+WHERE vehicle_type = 'Prime Sedan'
+  
+  AND driver_ratings GLOB '[0-9]*';
+  
+-- **7. Retrieve all rides where payment was made using UPI**:-
+
+SELECT *
+
+FROM OLA_DataSet
+
+WHERE payment_method = 'UPI';
+
+-- **8. Find the average customer rating per vehicle type**:-
+
+SELECT 
+    vehicle_type,
+    AVG(CAST(customer_rating AS REAL)) AS avg_customer_rating
+
+FROM OLA_DataSet
+
+WHERE customer_rating GLOB '[0-9]*'
+
+GROUP BY vehicle_type;
+
+-- **9. Calculate the total booking value of rides completed successfully**:-
+
+SELECT 
+    SUM(CAST(booking_value AS REAL)) AS total_success_booking_value
+
+FROM OLA_DataSet
+
+WHERE booking_status = 'Success'
+  AND booking_value GLOB '[0-9]*';
+
+-- **10. List all incomplete rides along with the reason**:-
+
+SELECT 
+    booking_id,
+    booking_status,
+    incomplete_rides_reason
+
+FROM OLA_DataSet
+
+WHERE booking_status <> 'Success';
+
+---
+
 ## 📊 Business Questions Answered
 
 ### 1. Overall
@@ -104,26 +213,34 @@ Table: **OLA_DataSet**
 ## 📈 Power BI Dashboard
 The Power BI report is structured into 5 pages:
 
-- **Overall** → Ride trends + status breakdown  
-- **Vehicle Type** → Distance and ratings by category  
-- **Revenue** → Payment breakdown + top customers  
-- **Cancellation** → Drill-down into reasons  
-- **Ratings** → Compare driver vs customer feedback  
+- **Overall** → Ride trends + status breakdown
+<img width="1907" height="931" alt="image" src="https://github.com/user-attachments/assets/56360daf-33e4-49c4-8640-2a012b09122c" />
+<br/>
+<br/>
+ 
+- **Vehicle Type** → Distance and ratings by category
+<img width="1907" height="972" alt="image" src="https://github.com/user-attachments/assets/20ac1808-234f-4c99-b13e-87bf166c5171" />
+<br/>
+<br/>
+
+- **Revenue** → Payment breakdown + top customers
+<img width="1917" height="996" alt="image" src="https://github.com/user-attachments/assets/c61681c5-1c9a-459c-acac-7d660fc92d5f" />
+<br/>
+<br/>
+
+- **Cancellation** → Drill-down into reasons
+<img width="1903" height="988" alt="image" src="https://github.com/user-attachments/assets/f0a5647b-8dee-4715-b46e-6ff55f417be1" />
+<br/>
+<br/>
+
+- **Ratings** → Compare driver vs customer feedback
+<img width="1915" height="1012" alt="image" src="https://github.com/user-attachments/assets/46d0476d-aa5f-455f-8a03-254e05bcf399" />
+<br/>
+<br/>
+
 
 📂 File: `powerbi/OLA_dashboard.pbix`  
 📸 Screenshots: `powerbi/screenshots/`
-
----
-
-## 📌 Business Insights
-
-- 🚖 Ride Volume trends highlight peak times (helpful for surge pricing).
-
-- ❌ Cancellations show common reasons, guiding service improvements.
-
-- 💰 Revenue analysis identifies preferred payment methods & high-value customers.
-
-- ⭐ Ratings comparison shows mismatches between customer vs driver perception.
 
 ---
 
@@ -148,5 +265,56 @@ pip install plotly
 # run app
 streamlit run streamlit_app/ola_dashboard.py
 
+```
 ---
+<img width="1906" height="963" alt="image" src="https://github.com/user-attachments/assets/a0f36fae-c1ac-48ed-b4cc-c0daa5f05044" />
+<br/>
+<br/>
+<img width="1890" height="973" alt="image" src="https://github.com/user-attachments/assets/c5159448-dd30-4cb1-888a-db6c14e1d51d" />
+<br/>
+<br/>
+<img width="1867" height="871" alt="image" src="https://github.com/user-attachments/assets/347c4f5e-a23c-4c96-bce6-cd5583612e85" />
+<br/>
+<br/>
+<img width="1903" height="962" alt="image" src="https://github.com/user-attachments/assets/c5517cfc-6dc8-4de1-9fc5-327ed5bdb570" />
+<br/>
+<br/>
+<img width="1911" height="970" alt="image" src="https://github.com/user-attachments/assets/167ccd1a-29f9-4c94-83c5-e48a9c42e0af" />
+<br/>
+<br/>
+<img width="1833" height="955" alt="image" src="https://github.com/user-attachments/assets/a76df0a7-04ff-4f88-b352-20b5b1e4345b" />
+<br/>
+<br/>
+<img width="1915" height="962" alt="image" src="https://github.com/user-attachments/assets/32d89295-68de-4b54-ac78-e856307ae30f" />
+<br/>
+<br/>
+<img width="1912" height="950" alt="image" src="https://github.com/user-attachments/assets/881f04f4-b5e2-4be5-91f2-2883f90d98d6" />
+<br/>
+<>br/
+
+---
+
+## 6. Business Insights
+
+- ✅ Peak Ride Days: Ride demand is highest on weekends.
+- ✅ Popular Vehicles: Sedans & SUVs contribute highest ride distances.
+- ✅ Payment Preference: Digital methods (UPI & Wallet) dominate over cash.
+- ✅ Customer Loyalty: A few top customers account for significant revenue share.
+- ✅ Cancellations: More cancellations are customer-driven (location issues, change of plan).
+- ✅ Ratings Gap: Customers tend to rate drivers slightly lower than drivers rate customers.
+
+## 7. Conclusion
+
+This project demonstrates how SQL + Power BI + Streamlit can provide a complete end-to-end analytics solution:
+
+SQL → clean, structured data for KPIs.
+
+Power BI → executive-level dashboards.
+
+Streamlit → interactive web app for business users.
+
+🚀 With these insights, OLA can improve customer experience, reduce cancellations, and optimize driver allocation.
+
+
+
 

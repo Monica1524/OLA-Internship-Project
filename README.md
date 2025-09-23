@@ -7,13 +7,19 @@
 ---
 
 ## 📌 Overview
-This project analyzes **OLA ride booking data** using **SQL, Power BI, and Streamlit** to deliver actionable business insights.  
+The OLA Ride Analytics Project aims to analyze customer ride behavior, vehicle usage, revenue streams, cancellations, and ratings.
 
-The analysis addresses key questions such as:
-- How do ride volumes vary over time?
-- What are the top cancellation reasons?
-- Which vehicle types drive the most distance and revenue?
-- How do customer vs driver ratings compare?
+We leveraged:
+
+SQLite database (for structured storage and querying).
+
+SQL queries (for extracting KPIs).
+
+Power BI dashboards (for business-focused visualization).
+
+Streamlit dashboard (for interactive analytics & deployment).
+
+The goal was to provide data-driven insights for OLA’s operations, cancellations, and customer satisfaction.
 
 **Deliverables include:**
 - SQL schema + analysis queries  
@@ -25,26 +31,22 @@ The analysis addresses key questions such as:
 
 ## 📂 Repository Structure
 
+```
 OLA_Project/
 │── data/
 │ └── OLA.db # SQLite database (cleaned dataset)
-
 │── sql/
 │ ├── schema.sql # DB schema
 │ └── OLA.sql # Analysis queries
-│
 │── powerbi/
-│ └── OLA_Rides.pbix # Power BI report
+│ ├── OLA_Rides.pbix # Power BI report
 │ └── screenshots/ # PNG images of each page
-│
 │── streamlit_app/
 │ ├── ola_dashboard.py # Streamlit app
-│ └── requirements.txt # Dependencies
-
 │── assets/ # Logos & visuals
 │── README.md
 
-
+```
 ---
 
 ## 🗄️ Database Schema

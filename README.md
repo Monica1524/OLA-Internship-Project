@@ -115,6 +115,18 @@ The Power BI report is structured into 5 pages:
 
 ---
 
+## 📌 Business Insights
+
+- 🚖 Ride Volume trends highlight peak times (helpful for surge pricing).
+
+- ❌ Cancellations show common reasons, guiding service improvements.
+
+- 💰 Revenue analysis identifies preferred payment methods & high-value customers.
+
+- ⭐ Ratings comparison shows mismatches between customer vs driver perception.
+
+---
+
 ## 🌐 Streamlit Dashboard
 The **Streamlit dashboard** provides a web-based interface to explore the same insights interactively.
 
@@ -135,3 +147,6 @@ pip install plotly
 
 # run app
 streamlit run streamlit_app/ola_dashboard.py
+
+---
+

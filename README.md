@@ -216,27 +216,27 @@ WHERE booking_status <> 'Success';
 The Power BI report is structured into 5 pages:
 
 - **Overall** → Ride trends + status breakdown
-<img width="1907" height="931" alt="image" src="https://github.com/user-attachments/assets/56360daf-33e4-49c4-8640-2a012b09122c" />
+<img width="1907" height="831" alt="image" src="https://github.com/user-attachments/assets/56360daf-33e4-49c4-8640-2a012b09122c" />
 <br/>
 <br/>
  
 - **Vehicle Type** → Distance and ratings by category
-<img width="1907" height="972" alt="image" src="https://github.com/user-attachments/assets/20ac1808-234f-4c99-b13e-87bf166c5171" />
+<img width="1907" height="872" alt="image" src="https://github.com/user-attachments/assets/20ac1808-234f-4c99-b13e-87bf166c5171" />
 <br/>
 <br/>
 
 - **Revenue** → Payment breakdown + top customers
-<img width="1917" height="996" alt="image" src="https://github.com/user-attachments/assets/c61681c5-1c9a-459c-acac-7d660fc92d5f" />
+<img width="1917" height="896" alt="image" src="https://github.com/user-attachments/assets/c61681c5-1c9a-459c-acac-7d660fc92d5f" />
 <br/>
 <br/>
 
 - **Cancellation** → Drill-down into reasons
-<img width="1903" height="988" alt="image" src="https://github.com/user-attachments/assets/f0a5647b-8dee-4715-b46e-6ff55f417be1" />
+<img width="1903" height="888" alt="image" src="https://github.com/user-attachments/assets/f0a5647b-8dee-4715-b46e-6ff55f417be1" />
 <br/>
 <br/>
 
 - **Ratings** → Compare driver vs customer feedback
-<img width="1915" height="1012" alt="image" src="https://github.com/user-attachments/assets/46d0476d-aa5f-455f-8a03-254e05bcf399" />
+<img width="1915" height="912" alt="image" src="https://github.com/user-attachments/assets/46d0476d-aa5f-455f-8a03-254e05bcf399" />
 <br/>
 <br/>
 
@@ -292,7 +292,7 @@ streamlit run streamlit_app/ola_dashboard.py
 <br/>
 <img width="1912" height="950" alt="image" src="https://github.com/user-attachments/assets/881f04f4-b5e2-4be5-91f2-2883f90d98d6" />
 <br/>
-<>br/
+<br/>
 
 ---
 

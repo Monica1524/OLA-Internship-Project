@@ -356,7 +356,23 @@ streamlit run streamlit_app/ola_dashboard.py
 ---
 
 
-## 6. Business Insights
+## **6.Technical Stack**
+
+```
+Python: Pandas, NumPy, Streamlit, Plotly
+
+SQL (SQLite)
+
+Power BI
+
+Excel (for initial cleaning)
+
+Data Cleaning, EDA, Feature Engineering
+```
+
+---
+
+## **7. Business Insights**
 
 - ✅ Peak Ride Days: Ride demand is highest on weekends.
 - ✅ Popular Vehicles: Sedans & SUVs contribute highest ride distances.
@@ -367,7 +383,7 @@ streamlit run streamlit_app/ola_dashboard.py
 
 ---
 
-## 7. Conclusion
+## **8. Conclusion**
 
 This project demonstrates how SQL + Power BI + Streamlit can provide a complete end-to-end analytics solution:
 

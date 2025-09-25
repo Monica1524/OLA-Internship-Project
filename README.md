@@ -360,14 +360,10 @@ streamlit run streamlit_app/ola_dashboard.py
 
 ```
 Python: Pandas, NumPy, Streamlit, Plotly
-
-SQL (SQLite)
-
-Power BI
-
-Excel (for initial cleaning)
-
-Data Cleaning, EDA, Feature Engineering
+-SQL (SQLite)
+-Power BI
+-Excel (for initial cleaning)
+-Data Cleaning, EDA, Feature Engineering
 ```
 
 ---

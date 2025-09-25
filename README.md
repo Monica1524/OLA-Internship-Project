@@ -21,12 +21,6 @@ Streamlit dashboard (for interactive analytics & deployment).
 
 The goal was to provide data-driven insights for OLA’s operations, cancellations, and customer satisfaction.
 
-**Deliverables include:**
-- SQL schema + analysis queries  
-- Power BI dashboard (segmented by business themes)  
-- Streamlit interactive dashboard (SQL-backed)  
-- Project documentation (GitHub Pages)  
-
 ---
 
 ## 📂 Repository Structure
@@ -34,6 +28,7 @@ The goal was to provide data-driven insights for OLA’s operations, cancellatio
 ```
 OLA_Project/
 │── data/
+│ └── OLA_Dataset.xslx
 │ └── OLA.db # SQLite database (cleaned dataset)
 │── sql/
 │ ├── schema.sql # DB schema
@@ -48,6 +43,62 @@ OLA_Project/
 
 ```
 ---
+
+
+## **1. Problem Statement**
+The rise of ride-sharing platforms has transformed urban mobility. OLA generates vast amounts of data related to ride bookings, driver availability, fare calculations, and customer preferences. The challenge is to convert this data into actionable insights to improve operational efficiency, customer satisfaction, and business strategies.
+
+---
+
+## **2. Business Use Cases**
+- Identify peak demand hours and optimize driver allocation.
+- Analyze customer behavior for personalized marketing strategies.
+- Understand pricing patterns and surge pricing effectiveness.
+- Detect anomalies or fraudulent activities in ride data.
+
+---
+
+## **3. Dataset**
+- File: `dataset/OLA_Dataset.xlsx`
+- Contains columns such as booking_id, booking_datetime, booking_status, vehicle_type, ride_distance, booking_value, driver_ratings, customer_rating, payment_method, and derived flags (success, cancelled_by_customer, cancelled_by_driver).
+
+---
+
+
+## **4. Project Approach**
+
+1. **Data Cleaning & Preprocessing**
+   - Handle missing values and incorrect formats.
+   - Validate numeric ranges (ratings 0–5, distances positive).
+   - Remove duplicates and check primary key (`booking_id`).
+   - Added derived columns for:
+     - `successful_ride` (1 if ride completed)
+     - `cancelled_by_customer` (1 if cancelled by customer)
+     - `cancelled_by_driver` (1 if cancelled by driver)
+
+2. **SQL Database (SQLite)**
+   - Imported cleaned Excel as CSV into SQLite.
+   - Fixed datatypes for:
+     - `booking_id` → INTEGER PRIMARY KEY
+     - `driver_ratings` → REAL
+   - Wrote queries to extract insights: successful rides, average distances, cancellations, top customers, revenue, ratings.
+
+3. **Power BI Dashboard**
+   - Visualized key metrics:
+     - Overall: Ride Volume Over Time, Booking Status Breakdown
+     - Vehicle Type: Top 5 Vehicle Types by Ride Distance, Avg Customer Ratings
+     - Revenue: Revenue by Payment Method, Top 5 Customers, Ride Distance Distribution
+     - Cancellations: Reasons for cancelled rides
+     - Ratings: Driver Ratings Distribution, Customer vs Driver Ratings
+
+4. **Streamlit Application**
+   - Interactive dashboard replicating Power BI visuals.
+   - Sidebar for navigation: Overall, Vehicle Type, Revenue, Cancellation, Ratings.
+   - SQL queries fetch live data from SQLite DB.
+   - Plots: line charts, bar charts, pie charts using Plotly.
+
+---
+
 
 ## 🗄️ Database Schema
 Table: **OLA_DataSet**
@@ -78,7 +129,7 @@ Table: **OLA_DataSet**
 
 ---
 
-## SQL Queries
+## **5. SQL Queries**
 -- **1. Retrieve all Successful bookings**:-
 
 SELECT * FROM OLA_DataSet
@@ -268,7 +319,6 @@ pip install plotly
 streamlit run streamlit_app/ola_dashboard.py
 
 ```
----
 <img width="1906" height="963" alt="image" src="https://github.com/user-attachments/assets/a0f36fae-c1ac-48ed-b4cc-c0daa5f05044" />
 <br/>
 <br/>
@@ -294,7 +344,17 @@ streamlit run streamlit_app/ola_dashboard.py
 <br/>
 <br/>
 
+
 ---
+
+**Deliverables include:**
+- SQL schema + analysis queries  
+- Power BI dashboard (segmented by business themes)  
+- Streamlit interactive dashboard (SQL-backed)  
+- Project documentation (GitHub Pages)  
+
+---
+
 
 ## 6. Business Insights
 
@@ -304,6 +364,8 @@ streamlit run streamlit_app/ola_dashboard.py
 - ✅ Customer Loyalty: A few top customers account for significant revenue share.
 - ✅ Cancellations: More cancellations are customer-driven (location issues, change of plan).
 - ✅ Ratings Gap: Customers tend to rate drivers slightly lower than drivers rate customers.
+
+---
 
 ## 7. Conclusion
 
@@ -316,6 +378,8 @@ Power BI → executive-level dashboards.
 Streamlit → interactive web app for business users.
 
 🚀 With these insights, OLA can improve customer experience, reduce cancellations, and optimize driver allocation.
+
+---
 
 
 
